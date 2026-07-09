@@ -10,7 +10,7 @@ A living backlog for this harness — what works today, what’s intentionally s
 |------|--------|
 | Durable sessions (`sessions/*.jsonl`) | Working |
 | Grok agent loop (max 25 steps per user turn) | Working |
-| Tools: `list_files`, `read_file`, `write_file`, `delegate` | Working |
+| Tools: `list_files`, `read_file`, `write_file`, `current_working_folder`, `delegate` | Working |
 | Profiles: planner / implementer / reviewer (`AGENT_PROFILE`) | Working |
 | Turn snapshots (hidden system messages) | Working |
 | Structured harness logs (`logs/*.jsonl`) | Working |

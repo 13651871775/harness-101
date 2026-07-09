@@ -30,9 +30,9 @@ Set the profile with `AGENT_PROFILE` before `npm start`:
 
 | Profile | `AGENT_PROFILE` | Tools | Role |
 | -------- | ---------------- | ----- | ---- |
-| Planner | `planner` | `list_files`, `read_file` | Explore and produce a plan — no writes |
-| Implementer | `implementer` (default) | read tools + `write_file`, `delegate` | Make changes; prompts encourage read-before-write |
-| Reviewer | `reviewer` | `list_files`, `read_file` | Read-only feedback on the codebase |
+| Planner | `planner` | `list_files`, `read_file`, `current_working_folder` | Explore and produce a plan — no writes |
+| Implementer | `implementer` (default) | read tools + `write_file`, `current_working_folder`, `delegate` | Make changes; prompts encourage read-before-write |
+| Reviewer | `reviewer` | `list_files`, `read_file`, `current_working_folder` | Read-only feedback on the codebase |
 
 Example:
 
@@ -51,6 +51,7 @@ Profiles are defined in `src/harness/profiles.ts`. Each profile has its own syst
 | `list_files` | List files under a directory (workspace-relative) |
 | `read_file` | Read a file’s full text |
 | `write_file` | Write a file (creates parent dirs); result includes a unified diff |
+| `current_working_folder` | Return the absolute path of the harness’s current working folder (`process.cwd()`) |
 | `delegate` | Spawn a short-lived sub-agent (`planner` or `reviewer` only) in a child session |
 
 Paths are resolved from the **current working directory** (usually `the-harness/` when you run `npm start`). Paths that escape the workspace root are rejected.

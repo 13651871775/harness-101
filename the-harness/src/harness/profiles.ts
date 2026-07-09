@@ -28,19 +28,25 @@ export const PROFILES: Record<ProfileId, AgentProfile> = {
     id: "planner",
     label: "Planner (read-only)",
     systemPrompt: plannerPrompt,
-    allowedTools: ["read_file", "list_files"],
+    allowedTools: ["read_file", "list_files", "current_working_folder"],
   },
   implementer: {
     id: "implementer",
     label: "Implementer (read + write)",
     systemPrompt: implementerPrompt,
-    allowedTools: ["read_file", "write_file", "list_files", "delegate"],
+    allowedTools: [
+      "read_file",
+      "write_file",
+      "list_files",
+      "current_working_folder",
+      "delegate",
+    ],
   },
   reviewer: {
     id: "reviewer",
     label: "Reviewer (read-only feedback)",
     systemPrompt: reviewerPrompt,
-    allowedTools: ["read_file", "list_files"],
+    allowedTools: ["read_file", "list_files", "current_working_folder"],
   },
 };
 

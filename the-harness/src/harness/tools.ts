@@ -75,6 +75,18 @@ export const TOOLS = [
   {
     type: "function" as const,
     function: {
+      name: "current_working_folder",
+      description:
+        "Return the absolute path of the harness's current working folder (process.cwd()). Use when the user asks where the agent is running from.",
+      parameters: {
+        type: "object",
+        properties: {},
+      },
+    },
+  },
+  {
+    type: "function" as const,
+    function: {
       name: "delegate",
       description: `Spawn a read-only sub-agent (planner or reviewer profile) for one focused task. Use for exploration or review without bloating this session. Returns the sub-agent reply.`,
       parameters: {
@@ -138,6 +150,10 @@ async function listFiles(pathArg: string): Promise<string> {
   return lines.join("\n") || "(empty directory)";
 }
 
+function currentWorkingFolder(): string {
+  return process.cwd();
+}
+
 export async function executeTool(
   name: string,
   argsJson: string,
@@ -169,6 +185,8 @@ export async function executeTool(
         );
       case "list_files":
         return await listFiles(String(args.path ?? "."));
+      case "current_working_folder":
+        return currentWorkingFolder();
       case "delegate": {
         const profile = String(args.profile ?? "planner") as ProfileId;
         if (profile !== "planner" && profile !== "reviewer") {
