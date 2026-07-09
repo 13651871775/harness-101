@@ -5,12 +5,14 @@ dotenv.config();
 
 export class GrokAgent {
   private client: OpenAI;
-  public model = "grok-4.3";
+  // public model = "grok-4.3";
+  public model = "glm-5.2";
 
   constructor() {
     this.client = new OpenAI({
       apiKey: process.env.XAI_API_KEY,
-      baseURL: "https://api.x.ai/v1",
+      // baseURL: "https://api.x.ai/v1",
+      baseURL: "https://cmkey.cn/v1",
     });
   }
 
